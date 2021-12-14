@@ -42,7 +42,7 @@ const KeyUnit = ({ keyLetter, keyNumber, hasBlack }: {
     hasBlack?: boolean;
 }) => {
 
-    const [completeKeyName, setCompleteKeyName] = useState(`${keyLetter}${keyNumber}`);
+    const [completeKeyName, setCompleteKeyName] = useState(`${keyLetter}${keyNumber}`.toLowerCase());
 
     const handleClick: MouseEventHandler = (event) => {
 
@@ -97,18 +97,18 @@ const KeyUnit = ({ keyLetter, keyNumber, hasBlack }: {
     return (
         <PianoKeyElement
             className="piano-key"
-            data-key={completeKeyName.toLowerCase()}
+            data-key={completeKeyName}
             onClick={handleClick}
         >
             {hasBlack && (
                 <div className="black">
-                    {`${completeKeyName}#`} <br /> {getCharByPianoKey(completeKeyName.toLowerCase(), true)?.key.toUpperCase()}
+                    {`${completeKeyName.toUpperCase()}#`} <br /> {getCharByPianoKey(completeKeyName, true)?.key.toUpperCase()}
                     {/* {`${keyLetter}2#`}2# <br /> [ */}
                 </div>
             )}
             
             <span>
-                {`${completeKeyName}`} <br /> {getCharByPianoKey(completeKeyName.toLowerCase())?.key.toUpperCase()}
+                {`${completeKeyName.toUpperCase()}`} <br /> {getCharByPianoKey(completeKeyName)?.key.toUpperCase()}
                 {/* {`${keyLetter}2`}2 <br /> A */}
             </span>
         </PianoKeyElement>
